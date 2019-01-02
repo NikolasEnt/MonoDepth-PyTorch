@@ -21,8 +21,8 @@ class MonodepthLoss(nn.modules.Module):
             nh = h // ratio
             nw = w // ratio
             scaled_imgs.append(nn.functional.interpolate(img,
-                               size=[nh, nw], mode='bilinear',
-                               align_corners=True))
+                               size=[nh, nw], mode="area",
+                               align_corners=None))
         return scaled_imgs
 
     def gradient_x(self, img):
